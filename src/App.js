@@ -17,7 +17,7 @@ import Dysgraphia from './Dysgraphia';
 function App() {
   return (
     <Router>
-      <div className="App" style={{height:"100vh", width:"100vw", alignItems:"center", justifyContent:"center", textAlign:"center", backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", display:"flex", verticalAlign: "middle", horizontalAlign:"middle",flexDirection:'column'}}>
+      <div className="App" style={{height:"100vh", alignItems:"center", justifyContent:"center", textAlign:"center",padding:15,backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 120%)", display:"flex", verticalAlign: "middle", horizontalAlign:"middle",flexDirection:'column'}}>
         <Switch>
           <Route path="/dyslexia">
             <Dyslexia />

@@ -11,8 +11,11 @@ function Dyslexia() {
     const [nlanguage, setNLanguage] = useState("");
     const [olanguage, setOLanguage] = useState("");
     const [age, setAge] = useState("");
-    const UPLOAD_URL = "https://httpbin.org/post"
+    //const UPLOAD_URL = "http://127.0.0.1:5000/api/dyslexia/upload"
+    const UPLOAD_URL = "http://127.0.0.1:5000/api"
     const [selectedFile, setSelectedFile] = useState(null);
+    const [resultDyslexia,setResultDyslexia] = useState(-1);
+    const [result,setResult] = useState("");
     const handleFileInput = (e) => {
         // handle validations
         const file = e.target.files[0];
@@ -30,13 +33,22 @@ function Dyslexia() {
         formData.append("age", age);
         formData.append("file", selectedFile);
         console.log(formData.getAll)
-        console.log(gender);
+        //console.log(gender);
         axios
-          .post(UPLOAD_URL, formData)
+          .post(UPLOAD_URL, formData,{ crossDomain: true })
           .then((res) => {
-            console.log(res);
+            //console.log(res);
+            setResultDyslexia()
+            res.data.Status ===0 ? setResult("You Do not have Dyslexia") : setResult("You have Dyslexia")
+            console.log(res.data.Status)
           })
           .catch((err) => alert("Post request error"));
+          // axios
+          // .get(UPLOAD_URL)
+          // .then((res) => {
+          //   console.log(res);
+          // })
+          // .catch((err) => alert("Get request error"));
       };
   
     return (
@@ -52,7 +64,7 @@ function Dyslexia() {
             
         <input style={{padding:10}} type="file" onChange={handleFileInput} />
         <Button type="submit" onClick={submitForm} variant="outlined" color="primary">Submit</Button>
-        
+        {resultDyslexia !== -1 && <h1>{result}</h1>}
         </form>
       </div>
     );

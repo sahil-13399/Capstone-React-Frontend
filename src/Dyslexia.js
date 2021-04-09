@@ -3,6 +3,11 @@ import TextField from '@material-ui/core/TextField';
 import './Dyslexia.css'
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import Result from './Result';
+import { FormLabel } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 function Dyslexia() {
     const [fname, setFName] = useState("");
@@ -16,6 +21,7 @@ function Dyslexia() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [resultDyslexia,setResultDyslexia] = useState(-1);
     const [result,setResult] = useState("");
+
     const handleFileInput = (e) => {
         // handle validations
         const file = e.target.files[0];
@@ -53,19 +59,83 @@ function Dyslexia() {
   
     return (
       <div className="Dyslexia" >
-        <form>
+        {resultDyslexia !== -1 ? <Result result={result}/> : 
+        <form style={{width:400}}>
             <TextField id="standard-basic" label="First name" value={fname} onChange={(e) => setFName(e.target.value)}/>
             <TextField id="standard-basic" label="Last name" value={lname} onChange={(e) => setLName(e.target.value)}/>
-            <TextField id="standard-basic" label="Gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
-            <TextField id="standard-basic" label="Native Language" value={nlanguage} onChange={(e) => setNLanguage(e.target.value)}/>
-            <TextField id="standard-basic" label="Other Language" value={olanguage} onChange={(e) => setOLanguage(e.target.value)}/>
+            <TextField id="standard-basic" label="Gender (Male/Female)" value={gender} onChange={(e) => setGender(e.target.value)}/>
+            <TextField id="standard-basic" label="Can you speak Native Language (Yes/No)" value={nlanguage} onChange={(e) => setNLanguage(e.target.value)}/>
+            <TextField id="standard-basic" label="Can you speak any Other Language (Yes/No)" value={olanguage} onChange={(e) => setOLanguage(e.target.value)}/>
             <TextField id="standard-basic" label="Age" value={age} onChange={(e) => setAge(e.target.value)}/>
+        <FormLabel style={{margin:30}}>
+          Please enter the following words and upload the picture
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+        <div>
+          <List>
+            <ListItem>
+            <ListItemText
+                        primary="1. Demo "
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
             
-            
+                        primary="2. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="3. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="4. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="5. Demo"
+                      />
+            </ListItem>
+          </List> 
+        </div>
+        <div>
+          <List>
+          <ListItem>
+            <ListItemText
+                        primary="6. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="7. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="8. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="9. Demo"
+                      />
+            </ListItem>
+            <ListItem>
+            <ListItemText
+                        primary="10. Demo"
+                      />
+            </ListItem>
+          </List>
+        </div>
+        </div>
         <input style={{padding:10}} type="file" onChange={handleFileInput} />
+        </FormLabel>
+        
         <Button type="submit" onClick={submitForm} variant="outlined" color="primary">Submit</Button>
-        {resultDyslexia !== -1 && <h1>{result}</h1>}
-        </form>
+        
+        </form> }
       </div>
     );
 }

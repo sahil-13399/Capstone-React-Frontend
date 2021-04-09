@@ -67,8 +67,8 @@ function Dyslexia() {
             <TextField id="standard-basic" label="Can you speak Native Language (Yes/No)" value={nlanguage} onChange={(e) => setNLanguage(e.target.value)}/>
             <TextField id="standard-basic" label="Can you speak any Other Language (Yes/No)" value={olanguage} onChange={(e) => setOLanguage(e.target.value)}/>
             <TextField id="standard-basic" label="Age" value={age} onChange={(e) => setAge(e.target.value)}/>
-        <FormLabel style={{margin:30}}>
-          Please enter the following words and upload the picture
+        <FormLabel style={{margin:20}}>
+        <h4>  Please write the following words and upload the picture</h4>
         <div style={{display:'flex',justifyContent:'space-between'}}>
         <div>
           <List>
@@ -133,7 +133,7 @@ function Dyslexia() {
         <input style={{padding:10}} type="file" onChange={handleFileInput} />
         </FormLabel>
         
-        <Button type="submit" onClick={submitForm} variant="outlined" color="primary">Submit</Button>
+        <Button style={{borderColor:'black',fontWeight:'bold'}}type="submit" onClick={submitForm} variant="outlined" color="primary">Submit</Button>
         
         </form> }
       </div>

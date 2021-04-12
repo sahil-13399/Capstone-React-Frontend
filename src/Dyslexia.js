@@ -75,28 +75,28 @@ function Dyslexia() {
           <List>
             <ListItem>
             <ListItemText
-                        primary="1. Demo "
+                        primary="1. bury "
                       />
             </ListItem>
             <ListItem>
             <ListItemText
             
-                        primary="2. Demo"
+                        primary="2. anxious"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="3. Demo"
+                        primary="3. cartoon"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="4. Demo"
+                        primary="4. gentle"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="5. Demo"
+                        primary="5. cat"
                       />
             </ListItem>
           </List> 
@@ -105,27 +105,27 @@ function Dyslexia() {
           <List>
           <ListItem>
             <ListItemText
-                        primary="6. Demo"
+                        primary="6. hello"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="7. Demo"
+                        primary="7. diamond"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="8. Demo"
+                        primary="8. quick"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="9. Demo"
+                        primary="9. juice"
                       />
             </ListItem>
             <ListItem>
             <ListItemText
-                        primary="10. Demo"
+                        primary="10. wise"
                       />
             </ListItem>
           </List>

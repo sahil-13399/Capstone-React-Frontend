@@ -33,13 +33,36 @@ function Dyscalculia() {
     const [counter,setCounter] = useState(0);
     const submitForm = (e) => {
       e.preventDefault() 
-   
+      console.log(setComp2);
       //setSelectedFile(e.target.files[0])
       const formData = new FormData();
       formData.append('comp1',comp1);
       formData.append('comp2',comp2);
       formData.append('comp3',comp3);
       formData.append('comp4',comp4);
+      formData.append('count1',count1);
+      formData.append('count2',count2);
+      formData.append('count3',count3);
+      formData.append('count4',count4);
+      formData.append('compute1',compute1);
+      formData.append('compute2',compute2);
+      formData.append('compute3',compute3);
+      formData.append('compute4',compute4);
+      formData.append('time1',time1);
+      formData.append('time2',time2);
+      formData.append('time3',time3);
+      formData.append('time4',time4);
+      formData.append('geo1',geo1);
+      formData.append('geo2',geo2);
+      formData.append('geo3',geo3);
+      formData.append('geo4',geo4);
+      const UPLOAD_URL = "https://httpbin.org/post" 
+      axios
+          .post(UPLOAD_URL, formData,{ crossDomain: true })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => alert("Get request error"));
     };
     return (
       <div className="Dyscalculia">
@@ -95,7 +118,7 @@ function Dyscalculia() {
             <TextField style={{width:200,marginBottom:30}} id="standard-basic" label="4. " value={geo4} onChange={(e) => setGeo4(e.target.value)}/>
             <div className="Button" style={{display:'flex'}}>
               <Button variant="contained" color="primary" style={{width:100,right:-570}} onClick={()=>setCounter(counter-1)}>Prev</Button>
-              <Button variant="contained" color="primary" style={{width:100,right:-600}} onClick={()=>setCounter(counter+1)}>Submit</Button>
+              <Button variant="contained" color="primary" style={{width:100,right:-600}} onClick={submitForm}>Submit</Button>
             </div>
           </div>}
         </form>

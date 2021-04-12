@@ -49,7 +49,7 @@ function Dyslexia() {
             res.data.Status ===0 ? setResult("You Do not have Dyslexia") : setResult("You have Dyslexia")
             console.log(res.data.Status)
           })
-          .catch((err) => alert("Post request error"));
+          .catch((err) => alert("Please enter the details correctly"));
           // axios
           // .get(UPLOAD_URL)
           // .then((res) => {

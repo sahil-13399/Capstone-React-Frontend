@@ -16,8 +16,8 @@ function Dyslexia() {
     const [nlanguage, setNLanguage] = useState("");
     const [olanguage, setOLanguage] = useState("");
     const [age, setAge] = useState("");
-    //const UPLOAD_URL = "http://127.0.0.1:5000/api/dyslexia/upload"
-    const UPLOAD_URL = "http://127.0.0.1:5000/api"
+    const UPLOAD_URL = "http://127.0.0.1:5000/api/dyslexia/upload"
+    //const UPLOAD_URL = "http://127.0.0.1:5000/api"
     //const UPLOAD_URL = "https://httpbin.org/post" 
     const [selectedFile, setSelectedFile] = useState(null);
     const [resultDyslexia,setResultDyslexia] = useState(-1);
@@ -45,7 +45,7 @@ function Dyslexia() {
           .post(UPLOAD_URL, formData,{ crossDomain: true })
           .then((res) => {
             //console.log(res);
-            setResultDyslexia()
+            setResultDyslexia(1)
             res.data.Status ===0 ? setResult("You Do not have Dyslexia") : setResult("You have Dyslexia")
             console.log(res.data.Status)
           })

@@ -7,9 +7,16 @@ import image_time from './static/image_time.png'
 import image_geo from './static/image_geometry.png'
 import { Button } from '@material-ui/core';
 import axios from 'axios';
+import Result from './Result';
 
 
 function Dyscalculia() {
+    const [resultDyscalculia,setResultDyscalculia] = useState(-1);
+    const [result,setResult] = useState("");
+    const [fname,setFname] = useState("");
+    const [lname,setLname] = useState("");
+    const [age,setAge] = useState("")
+    const [gender,setGender] = useState("")
     const [comp1, setComp1] = useState("");  
     const [comp2, setComp2] = useState("");
     const [comp3, setComp3] = useState("");
@@ -36,6 +43,8 @@ function Dyscalculia() {
       console.log(setComp2);
       //setSelectedFile(e.target.files[0])
       const formData = new FormData();
+      formData.append('age',age)
+      formData.append('gender',gender)
       formData.append('comp1',comp1);
       formData.append('comp2',comp2);
       formData.append('comp3',comp3);
@@ -56,28 +65,43 @@ function Dyscalculia() {
       formData.append('geo2',geo2);
       formData.append('geo3',geo3);
       formData.append('geo4',geo4);
-      const UPLOAD_URL = "https://httpbin.org/post" 
+      //const UPLOAD_URL = "https://httpbin.org/post" 
+      const UPLOAD_URL = "http://127.0.0.1:5000/api/dyscalculia/upload"
       axios
           .post(UPLOAD_URL, formData,{ crossDomain: true })
           .then((res) => {
+            setResultDyscalculia(0)
+            res.data.Status ===0 ? setResult("You Do not have Dyscalculia") : setResult("You have Dyscalculia")
             console.log(res);
           })
-          .catch((err) => alert("Get request error"));
+          .catch((err) => alert("POST request error"));
     };
     return (
       <div className="Dyscalculia">
+        {resultDyscalculia !== -1 ? <Result result={result}/> :
         <form>
-          {counter === 0 && <div className="compare" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          {counter ===0 && <div className="basic" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+            <TextField style={{width:400}} id="standard-basic" label="First Name" value={fname} onChange={(e) => setFname(e.target.value)}/>
+            <TextField style={{width:400}} id="standard-basic" label="Last Name" value={lname} onChange={(e) => setLname(e.target.value)}/>
+            <TextField style={{width:400}} id="standard-basic" label="Age" value={age} onChange={(e) => setAge(e.target.value)}/>
+            <TextField style={{width:400,marginBottom:50}} id="standard-basic" label="Gender (Male/Female)" value={gender} onChange={(e) => setGender(e.target.value)}/>
+            <div className="Button" style={{display:'flex'}}>
+              <Button variant="contained" color="primary" style={{width:100,right:-470}} onClick={()=>setCounter(counter+1)}>Next</Button>
+            </div>
+          </div>
+          }
+          {counter === 1 && <div className="compare" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
             <img src={image_compare} alt="location invalid"/>
             <TextField style={{width:200,marginTop:30}} id="standard-basic" label="1. " value={comp1} onChange={(e) => setComp1(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="2. " value={comp2} onChange={(e) => setComp2(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="3. " value={comp3} onChange={(e) => setComp3(e.target.value)}/>
             <TextField style={{width:200,marginBottom:30}} id="standard-basic" label="4. " value={comp4} onChange={(e) => setComp4(e.target.value)}/>
             <div className="Button" style={{display:'flex'}}>
+              <Button variant="contained" color="primary" style={{width:100,right:-570}} onClick={()=>setCounter(counter-1)}>Prev</Button>
               <Button variant="contained" color="primary" style={{width:100,right:-600}} onClick={()=>setCounter(counter+1)}>Next</Button>
             </div>
           </div>}
-          {counter === 1 && <div className="counting" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          {counter === 2 && <div className="counting" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
             <img src={image_count} alt="location invalid"/>
             <TextField style={{width:200,marginTop:30}} id="standard-basic" label="1. " value={count1} onChange={(e) => setCount1(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="2. " value={count2} onChange={(e) => setCount2(e.target.value)}/>
@@ -88,7 +112,7 @@ function Dyscalculia() {
               <Button variant="contained" color="primary" style={{width:100,right:-600}} onClick={()=>setCounter(counter+1)}>Next</Button>
             </div>
           </div>}
-          {counter === 2 && <div className="compute" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          {counter === 3 && <div className="compute" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
             <img src={image_compute} alt="location invalid"/>
             <TextField style={{width:200,marginTop:30}} id="standard-basic" label="1. " value={compute1} onChange={(e) => setCompute1(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="2. " value={compute2} onChange={(e) => setCompute2(e.target.value)}/>
@@ -99,7 +123,7 @@ function Dyscalculia() {
               <Button variant="contained" color="primary" style={{width:100,right:-520}} onClick={()=>setCounter(counter+1)}>Next</Button>
             </div>
           </div>}
-          {counter === 3 && <div className="time" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          {counter === 4 && <div className="time" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
             <img src={image_time} style={{height:500}} alt="location invalid"/>
             <TextField style={{width:200,marginTop:30}} id="standard-basic" label="1. " value={time1} onChange={(e) => setTime1(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="2. " value={time2} onChange={(e) => setTime2(e.target.value)}/>
@@ -110,7 +134,7 @@ function Dyscalculia() {
               <Button variant="contained" color="primary" style={{width:100,right:-600}} onClick={()=>setCounter(counter+1)}>Next</Button>
             </div>
           </div>}
-          {counter === 4 && <div className="geometry" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          {counter === 5 && <div className="geometry" style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
             <img src={image_geo} style={{height:500}} alt="location invalid"/>
             <TextField style={{width:200,marginTop:30}} id="standard-basic" label="1. " value={geo1} onChange={(e) => setGeo1(e.target.value)}/>
             <TextField style={{width:200}} id="standard-basic" label="2. " value={geo2} onChange={(e) => setGeo2(e.target.value)}/>
@@ -122,6 +146,7 @@ function Dyscalculia() {
             </div>
           </div>}
         </form>
+      }
       </div>
     );
 }

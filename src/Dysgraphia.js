@@ -5,8 +5,8 @@ import Result from './Result';
 
 function Dysgraphia() {
     const [selectedFile, setSelectedFile] = useState(null);
-    //const UPLOAD_URL = "http://127.0.0.1:5000/api/dysgraphia/upload"
-    const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dysgraphia/upload" 
+    const UPLOAD_URL = "http://127.0.0.1:5000/api/dysgraphia/upload"
+    //const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dysgraphia/upload" 
     const [resultDysgraphia,setResultDysgraphia] = useState(-1);
     const [result,setResult] = useState("");
     const handleFileInput = (e) => {

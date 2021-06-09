@@ -65,8 +65,8 @@ function Dyscalculia() {
       formData.append('geo2',geo2);
       formData.append('geo3',geo3);
       formData.append('geo4',geo4);
-      const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dyscalculia/upload" 
-      //const UPLOAD_URL = "http://127.0.0.1:5000/api/dyscalculia/upload"
+      //const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dyscalculia/upload" 
+      const UPLOAD_URL = "http://127.0.0.1:5000/api/dyscalculia/upload"
       axios
           .post(UPLOAD_URL, formData,{ crossDomain: true })
           .then((res) => {

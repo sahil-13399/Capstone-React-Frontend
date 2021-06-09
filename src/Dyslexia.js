@@ -16,8 +16,8 @@ function Dyslexia() {
     const [nlanguage, setNLanguage] = useState("");
     const [olanguage, setOLanguage] = useState("");
     const [age, setAge] = useState("");
-    //const UPLOAD_URL = "http://127.0.0.1:5000/api/dyslexia/upload"
-    const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dyslexia/upload"
+    const UPLOAD_URL = "http://127.0.0.1:5000/api/dyslexia/upload"
+    //const UPLOAD_URL = "https://flask-capstone-docker.herokuapp.com/api/dyslexia/upload"
     //const UPLOAD_URL = "https://httpbin.org/post" 
     const [selectedFile, setSelectedFile] = useState(null);
     const [resultDyslexia,setResultDyslexia] = useState(-1);
